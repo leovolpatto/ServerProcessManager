@@ -39,6 +39,9 @@ final class ServerProcessManager {
             case 'linux':
                 $this->manager = new Manager\LinuxProcessManager();
                 break;
+            case 'winnt':
+                $this->manager = new Manager\WindowsProcessManager();
+                break;
             default:
                 throw new \Exception('Not implemented yet');
         }

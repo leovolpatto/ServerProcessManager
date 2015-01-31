@@ -1,9 +1,7 @@
 <?php
-
 require_once 'loader.php';
 $m = \ServerProcessManager\ServerProcessManager::GetInstance();
 $process = $m->GetProcessManager()->GetProcessList();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,84 +9,15 @@ $process = $m->GetProcessManager()->GetProcessList();
         <title>Server Process Manager</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css" type="text/css"/>
-       <style>
-            #list
-            {
-                font-family: cursive;
-                font-size: 12px;
-                font-weight: normal;
-            }
-            
-            #list .title
-            {
-                font-family: serif;
-                font-size: 14px;
-                font-weight: normal;                
-            }
-            
-            .colCommand{
-                text-align: left;
-                padding-left: 40px;
-            }
-            
-            .colUser{
-                text-align: left;
-            }
-            
-            .colCpu
-            {
-                text-align: right;
-            }
-            
-            .colMem
-            {
-                text-align: right;
-            }
-            
-            .colVsz
-            {
-                text-align: right;
-            }
-            
-            .colRss
-            {
-                text-align: right;
-            }
-            
-            .colTime
-            {
-                text-align: right;
-            }
-            
-            .colStarted
-            {
-                text-align: right;
-            }
-            
-            .colPid
-            {
-                text-align: right;
-            }
-            
-            .colTty
-            {
-                text-align: center;
-            }
-            
-            .colStat
-            {
-                text-align: center;
-            }
-            
-            button
-            {
-                height: 20px;
-                font-size: 11px;
-            }
+        <link rel="stylesheet" href="GUI/css/style.css" type="text/css"/>
+        <style>
         </style>
     </head>
     <body>
+
+        <h3 style="font-family: sans-serif" ><?php echo count($process); ?> process were found</h3>
+        
+        <hr/>
         
         <table width='100%' id='tabProcess'  class="tablesorter">
             <thead>
@@ -108,17 +37,13 @@ $process = $m->GetProcessManager()->GetProcessList();
                 </tr>
             </thead>
             <tbody>
-                
-            
-                
-            <?php
-            
-            
-            
-            foreach($process as $p)
-            {
-                echo 
-                "<tr>
+
+
+
+<?php
+foreach ($process as $p) {
+    echo
+    "<tr>
                     <th><button>Kill</button></th>
                     <th class='colUser'>$p->user</th>
                     <th class='colPid'>$p->pid</th>
@@ -132,22 +57,20 @@ $process = $m->GetProcessManager()->GetProcessList();
                     <th class='colTime'>$p->time</th>
                     <th class='colCommand'>$p->command</th>                            
                 </tr>";
-            }
-            
-            ?>
-                </tbody>
+}
+?>
+            </tbody>
         </table>
     </body>
-        <script src="jquery-latest.js"></script>
-        <script src="jquery.tablesorter.js"></script>    
-        <script src="jquery.metadata.js"></script>    
-        <script src=""></script>    
-        
-        <script>
-            $(document).ready(function() 
-                { 
-                    $("#tabProcess").tablesorter(); 
-                } 
-            );         
-        </script>        
+    <script src="GUI/jquery-latest.js"></script>
+    <script src="GUI/jquery.tablesorter.js"></script>    
+    <script src="GUI/jquery.metadata.js"></script>    
+
+    <script>
+        $(document).ready(function ()
+        {
+            $("#tabProcess").tablesorter();
+        }
+        );
+    </script>        
 </html>
