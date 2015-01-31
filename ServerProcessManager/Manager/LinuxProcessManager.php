@@ -52,7 +52,10 @@ final class LinuxProcessManager implements IProcessManager {
     }
 
     public function KillProcess($processID) {
+        $r = exec("kill $processID", $output);
         
+        var_dump($r);
+        var_dump($output);
     }
     
 

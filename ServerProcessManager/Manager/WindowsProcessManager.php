@@ -19,7 +19,7 @@ final class WindowsProcessManager implements IProcessManager {
             $ar = str_getcsv($task_list[$i]);
 
             $p = new Process();
-            $p->command = $ar[0] . " " . $ar[8];
+            $p->command = $ar[0];
             $p->cpuUsage = $ar[7];
             $p->memoryUsage = $ar[4];
             $p->pid = $ar[1];
@@ -47,6 +47,7 @@ final class WindowsProcessManager implements IProcessManager {
     }
 
     /**
+     * Calculates the CPU % usage for each process. I'm not pretty sure if this calculation is right. Any help here would be apreciated :)
      * @param Process[] $processes
      * @return Process[]
      */
